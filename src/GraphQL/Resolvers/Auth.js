@@ -174,7 +174,7 @@ export default {
     }
   },
   Mutation: {
-    inserNewUser: async (_, { usuario, correo, clave }) => {
+    inserNewUser: async (_, { usuario, pri_nombre, seg_nombre, pri_apellido, seg_apellido, cedula_usr, gerencia, correo, clave }) => {
       try {
         const { SECRET_KEY } = process.env
         const claveDesencriptada = CryptoJS.AES.decrypt(
@@ -186,9 +186,18 @@ export default {
         if (hashClave !== null) {
           await db1.none(
             `INSERT INTO public.d008t_usuarios
-            (usuario, nu_clave, tx_correo, co_rol)
-            VALUES($1, $3, $2, 1);`,
-            [usuario, correo, hashClave]
+            (usuario, nu_clave, nb_usuario, nb2_usuario, ap_usuario, ap2_usuario, cedula_usr, gerencia, tx_correo, co_rol)
+            VALUES($1, $9, $2, $3, $4, $5, $6, $7, $8, 1);`,
+            [usuario,
+              correo,
+              hashClave, 
+              pri_nombre, 
+              seg_nombre, 
+              pri_apellido, 
+              seg_apellido, 
+              cedula_usr,
+              gerencia
+            ]
           )
 
           return {

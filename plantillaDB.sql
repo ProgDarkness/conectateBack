@@ -50,10 +50,12 @@ CREATE TABLE public.d008t_usuarios (
     co_usuario integer NOT NULL,
     usuario character varying(60) NOT NULL,
     nu_clave character varying(100) NOT NULL,
-    nb_usuario character varying(30),
-    ap_usuario character varying(30),
-    nb2_usuario character varying(30),
-    ap2_usuario character varying(30),
+    nb_usuario character varying(160) NOT NULL,
+    nb2_usuario character varying(160),
+    ap_usuario character varying(160) NOT NULL,
+    ap2_usuario character varying(160),
+    cedula_usr character varying(15) NOT NULL,
+    gerencia character varying(60) NOT NULL,
     co_rol integer,
     tx_correo character varying(50) NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
@@ -413,8 +415,8 @@ ALTER TABLE ONLY public.i011t_items_menu ALTER COLUMN id_item SET DEFAULT nextva
 -- Data for Name: d008t_usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.d008t_usuarios (co_usuario, usuario, nu_clave, nb_usuario, ap_usuario, nb2_usuario, ap2_usuario, co_rol, tx_correo, created_at, updated_at) FROM stdin;
-2	gmarcano	8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92	\N	\N	\N	\N	1	gabrielmarcano141@gmail.com	2024-07-28 02:41:18.671961	\N
+COPY public.d008t_usuarios (co_usuario, usuario, nu_clave, nb_usuario, nb2_usuario, ap_usuario, ap2_usuario, cedula_usr, gerencia, co_rol, tx_correo, created_at, updated_at) FROM stdin;
+2	gmarcano	8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92	gabriel	\N	marcano	\N	28415452	altamira	1	gabrielmarcano141@gmail.com	2024-07-28 02:41:18.671961	\N
 \.
 
 
