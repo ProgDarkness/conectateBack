@@ -174,8 +174,20 @@ export default {
     }
   },
   Mutation: {
-    inserNewUser: async (_, { usuario, pri_nombre, seg_nombre, pri_apellido, seg_apellido, cedula_usr, gerencia, correo, clave }) => {
+    inserNewUser: async (_, { input }) => {
       try {
+        const {
+          usuario,
+          pri_nombre,
+          seg_nombre,
+          pri_apellido,
+          seg_apellido,
+          cedula_usr,
+          gerencia,
+          correo,
+          clave
+        } = input
+
         const { SECRET_KEY } = process.env
         const claveDesencriptada = CryptoJS.AES.decrypt(
           clave,
@@ -188,13 +200,14 @@ export default {
             `INSERT INTO public.d008t_usuarios
             (usuario, nu_clave, nb_usuario, nb2_usuario, ap_usuario, ap2_usuario, cedula_usr, gerencia, tx_correo, co_rol)
             VALUES($1, $9, $2, $3, $4, $5, $6, $7, $8, 1);`,
-            [usuario,
+            [
+              usuario,
               correo,
-              hashClave, 
-              pri_nombre, 
-              seg_nombre, 
-              pri_apellido, 
-              seg_apellido, 
+              hashClave,
+              pri_nombre,
+              seg_nombre,
+              pri_apellido,
+              seg_apellido,
               cedula_usr,
               gerencia
             ]

@@ -57,7 +57,19 @@ type menuItem {
 }
 
 type Mutation {
-  inserNewUser(usuario: String!, correo: String!, clave: String!): Result!
+  inserNewUser(input: InputNewUser!): Result!
+}
+
+input InputNewUser {
+  usuario: String!
+  pri_nombre: String!
+  seg_nombre: String
+  pri_apellido: String!
+  seg_apellido: String
+  cedula_usr: String!
+  gerencia: String!
+  correo: String!
+  clave: String!
 }
 
 input InputLogin {
